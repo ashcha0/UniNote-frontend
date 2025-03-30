@@ -1,0 +1,20 @@
+<!--pages/create/create.wxml - 备忘录风格-->
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="page-title">创建备忘录</text>
+  </view>
+  
+  <!-- 创建表单 -->
+  <form bindsubmit="formSubmit">
+    <view class="form-item">
+      <text>备忘录标题</text>
+      <input name="name" placeholder="请输入标题" />
+    </view>
+    <view class="form-item">
+      <text>备忘录内容</text>
+      <textarea name="description" placeholder="请输入内容"></textarea>
+    </view>
+    <button form-type="submit">保存备忘录</button>
+  </form>
+</view>

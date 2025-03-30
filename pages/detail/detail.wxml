@@ -1,0 +1,30 @@
+<!-- 详情页面 - 备忘录风格 -->
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="page-title">备忘录详情</text>
+  </view>
+  
+  <!-- 备忘录信息卡片 -->
+  <view class="card item">
+    <text class="note-title">ID: {{item.id}}</text>
+    <text class="note-title">名称: {{item.name}}</text>
+    <text wx:if="{{item.createTime}}" class="note-time">创建时间: {{item.createTime}}</text>
+  </view>
+  
+  <!-- 编辑表单 -->
+  <form bindsubmit="formSubmit">
+    <view class="form-item">
+      <text>备忘录标题</text>
+      <input name="name" value="{{item.name}}" placeholder="请输入标题" />
+    </view>
+    <view class="form-item">
+      <text>备忘录内容</text>
+      <textarea name="description" value="{{item.description}}" placeholder="请输入内容"></textarea>
+    </view>
+    <button form-type="submit">保存修改</button>
+  </form>
+  
+  <!-- 返回按钮 -->
+  <button class="back-btn" bindtap="navigateBack">返回列表</button>
+</view>

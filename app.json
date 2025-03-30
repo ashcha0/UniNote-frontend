@@ -1,0 +1,12 @@
+{
+    "pages": [
+        "pages/list/list",
+        "pages/detail/detail",
+        "pages/create/create"
+    ],
+    "window": {
+        "navigationBarTitleText": "我的备忘录",
+        "navigationBarBackgroundColor": "#4caf50",
+        "navigationBarTextStyle": "white"
+    }
+}

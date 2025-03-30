@@ -1,0 +1,61 @@
+/* 创建页面样式 */
+
+.container {
+  padding: 30rpx 20rpx;
+}
+
+/* 表单卡片样式 */
+form {
+  background-color: var(--card-background);
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 8rpx var(--shadow-color);
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 表单项样式 */
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.form-item text {
+  display: block;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* 输入框样式增强 */
+input, textarea {
+  border: 1px solid var(--border-color);
+  border-radius: 8rpx;
+  padding: 16rpx;
+  font-size: 28rpx;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary-color);
+}
+
+textarea {
+  height: 240rpx;
+}
+
+/* 提交按钮样式 */
+button[form-type="submit"] {
+  margin-top: 40rpx;
+  background-color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* 页面标题 */
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  color: var(--text-color);
+  text-align: center;
+}

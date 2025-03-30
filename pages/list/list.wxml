@@ -1,0 +1,29 @@
+<!-- 列表页面 - 备忘录风格 -->
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="page-title">我的备忘录</text>
+  </view>
+  
+  <!-- 备忘录列表 -->
+  <block wx:if="{{items.length > 0}}">
+    <view wx:for="{{items}}" wx:key="id" class="card item" bindtap="navigateToDetail" data-id="{{item.id}}">
+      <view class="note-card">
+        <text class="note-title">{{item.name}}</text>
+        <text class="note-description">{{item.description || '无描述'}}</text>
+        <text class="note-time">{{item.createTime || '刚刚'}}</text>
+      </view>
+      <view class="note-actions">
+        <button class="delete-btn" catchtap="deleteItem" data-id="{{item.id}}">×</button>
+      </view>
+    </view>
+  </block>
+  
+  <!-- 空状态提示 -->
+  <view class="empty-state" wx:if="{{items.length === 0}}">
+    <text class="empty-state-text">暂无备忘录，点击下方按钮创建</text>
+  </view>
+  
+  <!-- 浮动新增按钮 -->
+  <view class="add-btn" bindtap="navigateToCreate">+</view>
+</view>
