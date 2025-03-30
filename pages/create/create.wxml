@@ -9,7 +9,7 @@
   <form bindsubmit="formSubmit">
     <view class="form-item">
       <text>备忘录标题</text>
-      <input name="name" placeholder="请输入标题" />
+      <input style="height: 60rpx; display: block; box-sizing: border-box;padding: 0 20rpx" name="name" placeholder="请输入标题" />
     </view>
     <view class="form-item">
       <text>备忘录内容</text>

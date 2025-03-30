@@ -5,7 +5,7 @@
         "pages/create/create"
     ],
     "window": {
-        "navigationBarTitleText": "我的备忘录",
+        "navigationBarTitleText": "UniNote",
         "navigationBarBackgroundColor": "#4caf50",
         "navigationBarTextStyle": "white"
     }

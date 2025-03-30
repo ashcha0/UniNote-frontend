@@ -1,26 +1,57 @@
 /* 创建页面样式 */
 
 .container {
-  padding: 30rpx 20rpx;
+  padding: 30rpx 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 页面标题样式 */
+.page-header {
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: var(--text-color);
+  display: inline-block;
+  position: relative;
+  padding-bottom: 10rpx;
+}
+
+.page-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 4rpx;
+  background-color: var(--primary-color);
+  border-radius: 2rpx;
 }
 
 /* 表单卡片样式 */
 form {
-  background-color: var(--card-background);
-  border-radius: 12rpx;
-  box-shadow: 0 2rpx 8rpx var(--shadow-color);
-  padding: 24rpx;
-  margin-bottom: 20rpx;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* 表单项样式 */
 .form-item {
   margin-bottom: 30rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .form-item text {
   display: block;
-  margin-bottom: 10rpx;
+  margin-bottom: 12rpx;
   font-size: 28rpx;
   font-weight: 500;
   color: var(--text-color);
@@ -28,16 +59,22 @@ form {
 
 /* 输入框样式增强 */
 input, textarea {
+  width: 100%;
   border: 1px solid var(--border-color);
   border-radius: 8rpx;
-  padding: 16rpx;
+  padding: 16rpx 20rpx;
   font-size: 28rpx;
   background-color: white;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 input:focus, textarea:focus {
   border-color: var(--primary-color);
+  box-shadow: 0 0 0 2rpx rgba(76, 175, 80, 0.1);
 }
 
 textarea {
@@ -49,13 +86,12 @@ button[form-type="submit"] {
   margin-top: 40rpx;
   background-color: var(--primary-color);
   font-weight: bold;
+  border-radius: 8rpx;
+  letter-spacing: 2rpx;
+  transition: all 0.3s ease;
 }
 
-/* 页面标题 */
-.page-title {
-  font-size: 36rpx;
-  font-weight: bold;
-  margin-bottom: 30rpx;
-  color: var(--text-color);
-  text-align: center;
+button[form-type="submit"]:active {
+  opacity: 0.8;
+  transform: scale(0.98);
 }

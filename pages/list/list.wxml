@@ -1,9 +1,9 @@
 <!-- 列表页面 - 备忘录风格 -->
 <view class="container">
   <!-- 页面标题 -->
-  <view class="page-header">
-    <text class="page-title">我的备忘录</text>
-  </view>
+  <!-- <view class="page-header">
+    <text class="page-title">UniNote</text>
+  </view> -->
   
   <!-- 备忘录列表 -->
   <block wx:if="{{items.length > 0}}">
@@ -14,7 +14,7 @@
         <text class="note-time">{{item.createTime || '刚刚'}}</text>
       </view>
       <view class="note-actions">
-        <button class="delete-btn" catchtap="deleteItem" data-id="{{item.id}}">×</button>
+        <button class="delete-btn" catchtap="deleteItem" data-id="{{item.id}}" style="position: relative; left: -20rpx; top: 0rpx">×</button>
       </view>
     </view>
   </block>

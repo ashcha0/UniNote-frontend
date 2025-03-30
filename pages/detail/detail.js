@@ -1,22 +1,34 @@
 // 详情页面逻辑
 Page({
     data: {
-        item: {}
+        item: {},
+        loading: true,
+        submitting: false
     },
     onLoad: function (options) {
         this.loadItem(options.id);
     },
     loadItem: function (id) {
         const app = getApp();
+        this.setData({ loading: true });
         app.globalData.request({
             url: `/${id}`,
             method: 'GET'
         }).then(res => {
-            this.setData({ item: res });
+            this.setData({
+                item: res,
+                loading: false
+            });
         }).catch(err => {
-            wx.showToast({
-                title: '获取详情失败',
-                icon: 'none'
+            this.setData({ loading: false });
+            wx.showModal({
+                title: '提示',
+                content: '获取详情失败，是否重试？',
+                success: (res) => {
+                    if (res.confirm) {
+                        this.loadItem(id);
+                    }
+                }
             });
         });
     },
@@ -24,6 +36,8 @@ Page({
         wx.navigateBack();
     },
     formSubmit: function (e) {
+        if (this.data.submitting) return;
+
         const { name, description } = e.detail.value;
         if (!name || !description) {
             wx.showToast({
@@ -32,6 +46,8 @@ Page({
             });
             return;
         }
+
+        this.setData({ submitting: true });
 
         const app = getApp();
         app.globalData.request({
@@ -54,6 +70,8 @@ Page({
                 title: '修改失败',
                 icon: 'none'
             });
+        }).finally(() => {
+            this.setData({ submitting: false });
         });
     }
 })
