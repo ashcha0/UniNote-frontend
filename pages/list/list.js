@@ -21,7 +21,16 @@ Page({
                 size: this.data.size
             }
         }).then(res => {
-            this.setData({ items: res.content });
+            // 格式化每个项目的创建时间
+            const formattedItems = res.content.map(item => {
+                if (item.createTime) {
+                    // 将ISO格式的日期字符串转换为Date对象
+                    const date = new Date(item.createTime);
+                    item.createTime = this.formatDate(date);
+                }
+                return item;
+            });
+            this.setData({ items: formattedItems });
         }).catch(err => {
             wx.showToast({
                 title: '加载失败',
