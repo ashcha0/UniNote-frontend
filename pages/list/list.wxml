@@ -25,5 +25,5 @@
   </view>
   
   <!-- 浮动新增按钮 -->
-  <view class="add-btn" bindtap="navigateToCreate">+</view>
+  <view class="add-btn" bindtap="navigateToCreate" style="position: fixed; left: 631rpx; top: 1176rpx">+</view>
 </view>
