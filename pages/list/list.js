@@ -27,9 +27,20 @@ Page({
                     // 将ISO格式的日期字符串转换为Date对象
                     const date = new Date(item.createTime);
                     item.createTime = this.formatDate(date);
+                    // 保存原始时间戳用于排序
+                    item.createTimestamp = date.getTime();
+                } else {
+                    // 如果没有创建时间，设置为当前时间
+                    const now = new Date();
+                    item.createTime = this.formatDate(now);
+                    item.createTimestamp = now.getTime();
                 }
                 return item;
             });
+
+            // 按创建时间降序排序，最新的笔记显示在最上方
+            formattedItems.sort((a, b) => b.createTimestamp - a.createTimestamp);
+
             this.setData({ items: formattedItems });
         }).catch(err => {
             wx.showToast({
