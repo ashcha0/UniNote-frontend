@@ -5,6 +5,25 @@
     <text class="page-title">UniNote</text>
   </view> -->
   
+  <!-- 筛选和排序区域 -->
+  <view class="filter-sort-container">
+    <view class="filter-section">
+      <text class="section-title">筛选：</text>
+      <view class="filter-options">
+        <view class="filter-option {{filterType === 'all' ? 'active' : ''}}" bindtap="setFilter" data-type="all">全部</view>
+        <view class="filter-option {{filterType === 'important' ? 'active' : ''}}" bindtap="setFilter" data-type="important">重要</view>
+        <view class="filter-option {{filterType === 'completed' ? 'active' : ''}}" bindtap="setFilter" data-type="completed">已完成</view>
+      </view>
+    </view>
+    <view class="sort-section">
+      <text class="section-title">排序：</text>
+      <view class="sort-options">
+        <view class="sort-option {{sortType === 'newest' ? 'active' : ''}}" bindtap="setSort" data-type="newest">最新</view>
+        <view class="sort-option {{sortType === 'oldest' ? 'active' : ''}}" bindtap="setSort" data-type="oldest">最早</view>
+      </view>
+    </view>
+  </view>
+  
   <!-- 备忘录列表 -->
   <block wx:if="{{items.length > 0}}">
     <view wx:for="{{items}}" wx:key="id" class="card item" bindtap="navigateToDetail" data-id="{{item.id}}">
