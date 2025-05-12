@@ -3,13 +3,44 @@ Page({
     data: {
         items: [],
         page: 0,
-        size: 10
+        size: 10,
+        filterType: 'all', // 默认筛选类型：全部
+        sortType: 'newest' // 默认排序方式：最新
     },
     onLoad: function () {
         this.loadItems();
     },
     onShow: function () {
         this.loadItems();
+    },
+    // 设置筛选类型
+    setFilter: function (e) {
+        const type = e.currentTarget.dataset.type;
+        this.setData({ filterType: type });
+
+        // TODO: 后端未实现筛选功能，这里仅更新UI状态
+        // 实际项目中，应该根据筛选类型重新请求数据或过滤现有数据
+        wx.showToast({
+            title: '筛选功能开发中',
+            icon: 'none'
+        });
+    },
+    // 设置排序方式
+    setSort: function (e) {
+        const type = e.currentTarget.dataset.type;
+        this.setData({ sortType: type });
+
+        // 根据排序类型对数据进行排序
+        const items = [...this.data.items];
+        if (type === 'newest') {
+            // 最新排序（ID降序）
+            items.sort((a, b) => b.id - a.id);
+        } else if (type === 'oldest') {
+            // 最早排序（ID升序）
+            items.sort((a, b) => a.id - b.id);
+        }
+
+        this.setData({ items: items });
     },
     loadItems: function () {
         const app = getApp();
@@ -30,6 +61,15 @@ Page({
                 }
                 return item;
             });
+
+            // 对笔记进行排序，确保新创建的笔记显示在最上方
+            // 这里假设每个笔记项目有一个id字段，id越大表示越新创建的笔记
+            if (this.data.sortType === 'newest') {
+                formattedItems.sort((a, b) => b.id - a.id);
+            } else {
+                formattedItems.sort((a, b) => a.id - b.id);
+            }
+
             this.setData({ items: formattedItems });
         }).catch(err => {
             wx.showToast({
